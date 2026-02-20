@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Newsletter sign-up</title>
+
+  <link rel="icon" type="image/png" sizes="32x32"
+        href="./assets/images/favicon-32x32.png">
+
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: hsl(235, 18%, 26%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ===== SIGNUP CARD ===== */
+    .card {
+      background: white;
+      border-radius: 20px;
+      display: flex;
+      width: 100%;
+      max-width: 960px;
+      overflow: hidden;
+    }
+
+    .content {
+      padding: 60px;
+      flex: 1;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: hsl(235, 18%, 26%);
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    li {
+      margin-bottom: 12px;
+      padding-left: 30px;
+      position: relative;
+    }
+
+    li::before {
+      content: url("./assets/images/icon-list.svg");
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .error {
+      float: right;
+      color: hsl(4, 100%, 67%);
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+
+    input.error-input {
+      border-color: hsl(4, 100%, 67%);
+      background: hsl(4, 100%, 95%);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: hsl(234, 29%, 20%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: hsl(4, 100%, 67%);
+    }
+
+    .image {
+      width: 40%;
+      background: url("./assets/images/illustration-sign-up-desktop.svg")
+        no-repeat center/cover;
+    }
+
+    /* ===== SUCCESS CARD ===== */
+    .success {
+      display: none;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 420px;
+    }
+
+    .success img {
+      width: 50px;
+      margin-bottom: 20px;
+    }
+
+    .success h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .success p {
+      margin-bottom: 30px;
+      color: hsl(235, 18%, 26%);
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column-reverse;
+        border-radius: 0;
+      }
+
+      .content {
+        padding: 40px 24px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .image {
+        width: 100%;
+        height: 280px;
+        background-image: url("./assets/images/illustration-sign-up-mobile.svg");
+      }
+
+      .success {
+        border-radius: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================= SIGNUP ================= -->
+<div class="card" id="signupCard">
+  <div class="content">
+    <h1>Stay updated!</h1>
+
+    <p>Join 60,000+ product managers receiving monthly updates on:</p>
+
+    <ul>
+      <li>Product discovery and building what matters</li>
+      <li>Measuring to ensure updates are a success</li>
+      <li>And much more!</li>
+    </ul>
+
+    <form id="form">
+      <label>
+        Email address
+        <span class="error" id="errorMsg"></span>
+      </label>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="email@company.com"
+      />
+
+      <button type="submit">
+        Subscribe to monthly newsletter
+      </button>
+    </form>
+  </div>
+
+  <div class="image"></div>
+</div>
+
+<!-- ================= SUCCESS ================= -->
+<div class="success" id="successCard">
+  <img src="./assets/images/icon-success.svg" alt="success icon" />
+
+  <h2>Thanks for subscribing!</h2>
+
+  <p>
+    A confirmation email has been sent to
+    <strong id="userEmail"></strong>.
+    Please open it and click the button inside to confirm your subscription.
+  </p>
+
+  <button id="dismissBtn">Dismiss message</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
